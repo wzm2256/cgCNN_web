@@ -51,7 +51,9 @@
 					Exemplar-based Texture Synthesis</h1>
 	        
 				<p style="text-align:center; margin-bottom:15px; margin-top:20px; font-size: 18px;">
-					<a href="aaa" style="color: #0088CC">Zi-Ming Wang</a><a style="color: #0088CC">,</a>
+					Zi-Ming Wang, Meng-Han Li
+					<!-- <a href="aaa" style="color: #0088CC">Zi-Ming Wang</a><a style="color: #0088CC">,</a>
+					<a href="aaa" style="color: #0088CC">Meng-Han Li</a><a style="color: #0088CC">,</a> -->
 					<a href="http://captain.whu.edu.cn/xia_En.html" style="color: #0088CC">Gui-Song Xia</a><a style="color: #0088CC">,</a>                     
 					<a target="_blank" href="http://captain.whu.edu.cn/" style="color: #0088CC; font-style: italic"><script type="math/tex"></script>LIESMARS CAPTAIN, Wuhan University, Wuhan, China</a>  <br>
 				</p>	 
@@ -95,13 +97,159 @@
 				<td colspan="2">
 					<p class="text" style="text-align:justify;">
 					</p>
+					Exemplar-based texture synthesis (EBTS) has been a dynamic yet challenging topic in computer vision and graphics for the past decades, 
+					which targets to produce new texture samples that are visually similar to a given exemplar.
+					Recently,
+					deep ConvNets have been used in texture modelling. 
+					<!-- parametric models has been revived by the use of ConvNets. -->
+					These models employ deep ConvNets that are pretrained on large-scale image data sets as feature extractors,
+					and generate new samples by seeking images that maximize certain similarity between their deep features and those from the exemplar. 
+
+					<br>
+					<br>
+					We propose a new texture model named conditional generative ConvNet (cgCNN) by integrating deep texture statistics and the probabilistic framework of generative ConvNet (gCNN).
+
+					Comparing to previous texture models that rely on pretrained ConvNets,
+					cgCNN has three main advantages:					
+					<ul style="font-weight:normal; text-align:justify;">
+					    <li>
+							It allows to synthesize different types of textures in a unified manner.
+						</li>
+						<li>
+							It can synthesize non-local textures without extra penalty terms as it is easier for the sampling algorithm to escape from local minimums,
+						</li>
+						<li>
+							It dose not require extra storage space for pretrained weights, and the synthesis results are free from low-level noise.
+						</li>
+					</ul>
+
+					<!-- We further present two forms of cgCNN:
+					<ul style="font-weight:normal; text-align:justify;">
+					    <li>
+							canonical cgCNN (c-cgCNN): It can synthesize highly non-stationary textures, and it's a generalization of Gatys' model.
+						</li>
+						<li>
+							forward cgCNN (f-cgCNN): It can synthesize arbitrarily large stationary textures, and it's a generalization of TextureNet.
+						</li>
+					</ul> -->
+
+					The main contributions of this work are summarized as follows:
+					<ul style="font-weight:normal; text-align:justify;">
+					    <li>
+							We propose cgCNN as a unified model for synthesizing various types of textures with high visual quality. It is also the first deep texture model for dynamic or sound texture expansion.
+						</li>
+						<li>
+							We propose a simple but effective algorithm for texture inpainting based on cgCNN. It is the first neural algorithm for sound texture inpainting.
+						</li>
+					</ul>
 
 				</td>
 			</tr>
 		</table>
 
 
+		<table class="content-table",class="left-align">
+				<tr>
+					<td colspan="6">
+						<div>
+						<h2 class="add-top-margin">Bounded constraint</h2>
+						<hr>
+						<p style="text-align:justify">
+							To ensure the energy dose not diverge to infinity,
+							we adopting bounded activation function in the network architecture.
+							We compare the results using different activation functions,
+							i.e. hard sigmoid, tanh and sigmoid.  
+						</p>
+						</div>
+					</td>
+				</tr>
 
+				<tr>
+					<th scope="row">Exemplar</th>
+					<td><a href="data/Activation/021.jpg"><img src="data/Activation/021.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/023.jpg"><img src="data/Activation/023.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/033.jpg"><img src="data/Activation/033.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/034.jpg"><img src="data/Activation/034.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/040.jpg"><img src="data/Activation/040.jpg" width="128"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">hard tanh</th>
+					<td><a href="data/Activation/_Ini0_0_021_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_021_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_023_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_023_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_033_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_033_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_034_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_034_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_040_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_040_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">tanh</th>
+					<td><a href="data/Activation/_Ini0_0_021_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_021_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_023_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_023_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_033_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_033_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_034_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_034_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_040_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_040_jpg_Try_112_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">sigmoid</th>
+					<td><a href="data/Activation/_Ini0_0_021_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_021_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_023_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_023_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_033_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_033_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_034_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_034_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Activation/_Ini0_0_040_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Activation/_Ini0_0_040_jpg_Try_113_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+				</tr>
+
+			</table>
+
+
+			<table class="content-table",class="left-align">
+				<tr>
+					<td colspan="6">
+						<div>
+						<h2 class="add-top-margin">Diversity of c-cgCNN</h2>
+						<hr>
+						<p style="text-align:justify">
+							The diversity of the synthesized textures is the result of the randomness of initial Gaussian noise, 
+							thus one does not need to make extra effort to ensure such diversity. 
+						</p>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<th scope="row">Exemplar</th>
+					<td><a href="data/Diversity/1autumn.jpg"><img src="data/Diversity/1autumn.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/AbVa.jpg"><img src="data/Diversity/AbVa.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/bubbly_0038.jpg"><img src="data/Diversity/bubbly_0038.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/pebbles1.jpg"><img src="data/Diversity/pebbles1.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/ss022.jpg"><img src="data/Diversity/ss022.jpg" width="128"/></a></td>
+				</tr>
+	
+				<tr>
+					<th>Synthesized sample 1 </th>
+					<td><a href="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
+				</tr>
+	
+				<tr>
+						<th>Synthesized sample 2 </th>
+					<td><a href="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
+				</tr>
+				<tr>
+						<th>Synthesized sample 3 </th>
+					<td><a href="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
+					<td><a href="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
+				</tr>
+	
+			</table>
 
 		<table class="content-table",class="left-align">
 			<tr>
@@ -111,7 +259,7 @@
 					<hr>
 					<p style="text-align:justify">
 						c-cgCNN becomes a fixed random model if we freeze the network during training. 
-						As we can see, this fixed model can only low quality textures which are blurry and noisy.
+						As we can see, this fixed model can only synthesize low quality textures which are blurry and noisy.
 					</p>
 					</div>
 				</td>
@@ -171,57 +319,66 @@
 
 		</table>
 
-
 		<table class="content-table",class="left-align">
-				<tr>
-					<td colspan="6">
-						<div>
-						<h2 class="add-top-margin">Diversity of c-cgCNN</h2>
-						<hr>
-						<p style="text-align:justify">
-							The diversity of the synthesized textures is the result of the randomness of initial Gaussian noise, 
-							thus one does not need to make extra effort to ensure such diversity. 
-						</p>
-						</div>
-					</td>
-				</tr>
+			<tr>
+				<td colspan="6">
+					<div>
+					<h2 class="add-top-margin">Ablation study on the network architecture</h2>
+					<hr>
+					<p style="text-align:justify">
+						We investigate the roles played by different layers in our network by using sub-networks with increasing receptive field.
+						The results in the leftmost (rightmost) column are generated by the sub-network with the smallest (largest) receptive field.
+						<!-- Denote <script type="math/tex">3 \mathbf D \oplus 0 \mathbf S</script> -->
+					</p>
+					</div>
+				</td>
+			</tr>
 
-				<tr>
-					<th scope="row">Exemplar</th>
-					<td><a href="data/Diversity/1autumn.jpg"><img src="data/Diversity/1autumn.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/AbVa.jpg"><img src="data/Diversity/AbVa.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/bubbly_0038.jpg"><img src="data/Diversity/bubbly_0038.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/pebbles1.jpg"><img src="data/Diversity/pebbles1.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/ss022.jpg"><img src="data/Diversity/ss022.jpg" width="128"/></a></td>
-				</tr>
+			<tr>
+				<th scope="row">Exemplar</th>
+				<td><a href="data/Ablation/porous.jpg"><img src="data/Ablation/porous.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/small.png"><img src="data/Ablation/small.png" width="128" /></a></td>
+				<td><a href="data/Ablation/pebbles.jpg"><img src="data/Ablation/pebbles.jpg" width="128" /></a></td>
+			</tr>
+
+			<!-- <tr class="border_bottom">
+				<td colspan=6></td>
+			</tr> -->
+
+			<tr>
+				<td colspan="6">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</td>
+			</tr>
+			<!-- <br />
+			<br /> -->
+			<tr>
+				<td><a href="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_0_depth_1_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_0_depth_1_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_0_depth_3_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_0_depth_3_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_0_depth_6_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_0_depth_6_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_0_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_0_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_1_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_1_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_porous_png_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+			</tr>
+
+			<tr>
+				<td><a href="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_0_depth_1_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_0_depth_1_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_0_depth_3_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_0_depth_3_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_0_depth_6_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_0_depth_6_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_0_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_0_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_1_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_1_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+				<td><a href="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_small_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+			</tr>
+
+			<tr>
+					<td><a href="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_0_depth_1_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_10000_.jpg"><img src="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_0_depth_1_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_10000_.jpg" width="128" /></a></td>
+					<td><a href="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_0_depth_3_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_10000_.jpg"><img src="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_0_depth_3_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_10000_.jpg" width="128" /></a></td>
+					<td><a href="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_0_depth_6_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_10000_.jpg"><img src="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_0_depth_6_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_10000_.jpg" width="128" /></a></td>
+					<td><a href="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_0_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_10000_.jpg"><img src="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_0_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_10000_.jpg" width="128" /></a></td>
+					<td><a href="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_1_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_1_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128" /></a></td>
+					<td><a href="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Ablation/_Ini0_0_pebbles_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128" /></a></td>
+			</tr>
 	
-				<tr>
-					<th>Synthesized sample 1 </th>
-					<td><a href="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg"><img src="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_0_5000_.jpg" width="128"/></a></td>
-				</tr>
-	
-				<tr>
-						<th>Synthesized sample 2 </th>
-					<td><a href="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg"><img src="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_1_5000_.jpg" width="128"/></a></td>
-				</tr>
-				<tr>
-						<th>Synthesized sample 3 </th>
-					<td><a href="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_1autumn_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_AbVa_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_bubbly_0038_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_pebbles1_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
-					<td><a href="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg"><img src="data/Diversity/_Ini0_0_ss022_jpg_Try_11_num_layer_3_depth_9_Onlypool_0_IsBig_0_IsMean_0_Adam_0_2_5000_.jpg" width="128"/></a></td>
-				</tr>
-	
-			</table>
+		</table>
+
 	
 
 		<table class="content-table", class="left-align">
@@ -231,7 +388,7 @@
 						<h2 class="add-top-margin">Image texture synthesis</h2>
 						<hr>
 						<p style="text-align:justify">
-							Texture synthesis using c-cgCNN, all exemplars and the synthesized image are of size (256, 256).
+							Image texture synthesis using c-cgCNN. All exemplars and the synthesized image are of size (256, 256).
 						</p>
 						</div>
 					</td>
@@ -340,10 +497,167 @@
 
 			</table>
 	
+			<table class="content-table">
+				<tr>
+					<td colspan="7">
+						<div>
+						<h2 class="add-top-margin">Dynamic texture synthesis</h2>
+						<hr>
+						<p style="text-align:justify">
+								Dynamic texture synthesis using c-cgCNN. All exemplars and the synthesized dynamic textures have 12 frames and each frames are of size (128, 128).
+						</p>
+						</div>
+					</td>
+				</tr>
+			
+				<tr>
+					<th scope="row">Exemplar</th>
+					<td><a href="data/Dynamic/ori/birds.gif"><img src="data/Dynamic/ori/birds.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/ori/smoke_1.gif"><img src="data/Dynamic/ori/smoke_1.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/ori/sea_4.gif"><img src="data/Dynamic/ori/sea_4.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/ori/sky_clouds_2.gif"><img src="data/Dynamic/ori/sky_clouds_2.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/ori/calm_water_4.gif"><img src="data/Dynamic/ori/calm_water_4.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/ori/flames.gif"><img src="data/Dynamic/ori/flames.gif" width="128" /></a></td>
+				</tr>
+				<tr>
+					<th scope="col">Two-stream</th>
+					<td><a href="data/Dynamic/two_stream/birds_128.gif"><img src="data/Dynamic/two_stream/birds_128.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/two_stream/smoke_1_128.gif"><img src="data/Dynamic/two_stream/smoke_1_128.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/two_stream/sea_4_128.gif"><img src="data/Dynamic/two_stream/sea_4_128.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/two_stream/sky_clouds_2_128.gif"><img src="data/Dynamic/two_stream/sky_clouds_2_128.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/two_stream/calm_water_4_128.gif"><img src="data/Dynamic/two_stream/calm_water_4_128.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/two_stream/flames_128.gif"><img src="data/Dynamic/two_stream/flames_128.gif" width="128" /></a></td>
+				</tr>
+				<tr>
+					
+					<th scope="col">c-cgCNN-Gram</th>
+					<td><a href="data/Dynamic/our/birds_gram_0_.gif"><img src="data/Dynamic/our/birds_gram_0_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/smoke_1_gram_0_.gif"><img src="data/Dynamic/our/smoke_1_gram_0_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/sea_4_gram_0_.gif"><img src="data/Dynamic/our/sea_4_gram_0_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/sky_cloud_2_gram_0_.gif"><img src="data/Dynamic/our/sky_cloud_2_gram_0_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/calm_water_4_gram_1_.gif"><img src="data/Dynamic/our/calm_water_4_gram_1_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/flames_gram_0_.gif"><img src="data/Dynamic/our/flames_gram_0_.gif" width="128" /></a></td>
+				</tr>
+				<tr>
+					<th scope="col">c-cgCNN-mean</th>
+					<td><a href="data/Dynamic/our/birds_mean_0_.gif"><img src="data/Dynamic/our/birds_mean_0_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/smoke_1_mean_0_.gif"><img src="data/Dynamic/our/smoke_1_mean_0_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/sea_4_mean_0_.gif"><img src="data/Dynamic/our/sea_4_mean_0_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/sky_cloud_2_mean_1_.gif"><img src="data/Dynamic/our/sky_cloud_2_mean_1_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/calm_water_4_mean_1_.gif"><img src="data/Dynamic/our/calm_water_4_mean_1_.gif" width="128" /></a></td>
+					<td><a href="data/Dynamic/our/flames_mean_1_.gif"><img src="data/Dynamic/our/flames_mean_1_.gif" width="128" /></a></td>
+				</tr>
+			</table>
+
+			<table class="content-table">
+				<tr>
+					<td colspan="5">
+						<div>
+						<h2 class="add-top-margin">Sound texture synthesis</h2>
+						<hr>
+						<p style="text-align:justify">
+								Sound texture synthesis using c-cgCNN.
+								All exemplars and synthesized textures have 50000 data points (~2 seconds). 
+						</p>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">Air conditioner</th>
+					<th scope="col">Pneumatic drill</th>
+					<th scope="col">Applause</th>
+					<th scope="col">Frog</th>
+				</tr>	
+				<tr>
+					<th scope="row" >Exemplar</th>
+					<td><audio controls="">
+							<source src="data/Sound/ori/cut_Air_conditioner.wav" >
+						</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/ori/cut_norm_Pneumatic_drills_at_road_works.wav">
+					</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/ori/cut_norm_Enthusiastic_applause.wav">
+					</audio>
+					</td>
+					<td><audio controls src="data/Sound/ori/cut_Frogs1.wav"></audio></td>
+				</tr>
+
+				<tr>
+					<th scope="row" >McDermott's model</th>
+					<td><audio controls="">
+							<source src="data/Sound/MC/cut_Air_conditioner.wav" >
+						</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/MC/cut_CSE-22Pneumaticdrillsatroad_works_10111119000110.wav">
+					</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/MC/cut_CSE-28_Enthusiastic_applause_10111119000110.wav">
+					</audio>
+					</td>
+					<td><audio controls src="data/Sound/MC/cut_Frogs1.wav"></audio></td>
+				</tr>
+
+				<tr>
+					<th scope="row" >Antognini's model</th>
+					<td><audio controls="">
+							<source src="data/Sound/AG/cut_Air_conditioner.wav" >
+						</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/AG/cut_Pneumatic_drills.wav">
+					</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/AG/cut_Applause2.wav">
+					</audio>
+					</td>
+					<td><audio controls src="data/Sound/AG/cut_Frogs1.wav"></audio></td>
+				</tr>
+
+				<tr>
+					<th scope="row" >c-cgCNN-mean</th>
+					<td><audio controls="">
+							<source src="data/Sound/our/_Ini0_0_Air_conditioner.wav_Try_8_num_layer_0_depth_4_IsMean_1_Adam_0_sn_0_Gau_1e-08_inner_10_1_3000_.wav" >
+						</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/our/_Ini0_0_norm_Pneumatic_drills_at_road_works.wav_Try_5_num_layer_0_depth_4_IsMean_1_Adam_0_sn_0_Gau_1e-08_inner_10_0_5000_.wav">
+					</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/our/_Ini0_0_norm_Enthusiastic_applause.wav_Try_8_num_layer_0_depth_4_IsMean_1_Adam_0_sn_0_Gau_1e-08_inner_10_1_5000_.wav">
+					</audio>
+					</td>
+					<td><audio controls src="data/Sound/our/_Ini0_0_Frogs1.wav_Try_8_num_layer_0_depth_4_IsMean_1_Adam_0_sn_0_Gau_1e-08_inner_10_1_3000_.wav"></audio></td>
+				</tr>
+
+				<tr>
+					<th scope="row" >c-cgCNN-Gram</th>
+					<td><audio controls="">
+							<source src="data/Sound/our/_Ini0_0_Air_conditioner.wav_Try_8_num_layer_0_depth_4_IsMean_0_Adam_0_sn_0_Gau_1e-08_inner_10_1_3000_.wav" >
+						</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/our/_Ini0_0_norm_Pneumatic_drills_at_road_works.wav_Try_8_num_layer_0_depth_4_IsMean_0_Adam_0_sn_0_Gau_1e-08_inner_10_0_5000_.wav">
+					</audio>
+					</td>
+					<td><audio controls="">
+						<source src="data/Sound/our/_Ini0_0_norm_Enthusiastic_applause.wav_Try_5_num_layer_0_depth_4_IsMean_0_Adam_0_sn_0_Gau_0.0_inner_10_0_5000_.wav">
+					</audio>
+					</td>
+					<td><audio controls src="data/Sound/our/_Ini0_0_Frogs1.wav_Try_8_num_layer_0_depth_4_IsMean_0_Adam_0_sn_0_Gau_1e-08_inner_10_1_3000_.wav"></audio></td>
+				</tr>
+		</table>
 
 			<table class="content-table",class="left-align">
 					<tr>
-						<td colspan="6">
+						<td colspan="5">
 							<div>
 							<h2 class="add-top-margin">Image texture expansion</h2>
 							<hr>
@@ -360,7 +674,7 @@
 						<td><a href="data/Image/Image/034.jpg"><img src="data/Image/Image/034.jpg" width="128" /></a></td>
 						<td><a href="data/Image/Image/040.jpg"><img src="data/Image/Image/040.jpg" width="128" /></a></td>
 						<td><a href="data/Image/Image/047.jpg"><img src="data/Image/Image/047.jpg" width="128" /></a></td>
-						<td><a href="data/Image/Image/t6.jpg"><img src="data/Image/Image/t6.jpg" width="128" /></a></td>
+						<td><a href="data/Image/Image/porous.jpg"><img src="data/Image/Image/porous.jpg" width="128" /></a></td>
 					</tr>
 					
 					<tr>
@@ -369,7 +683,7 @@
 							<td><a href="data/Image/fcgCNN/034.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_4000_.jpg"><img src="data/Image/fcgCNN/034.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_4000_.jpg" width="224" /></a></td>
 							<td><a href="data/Image/fcgCNN/040.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_4000_.jpg"><img src="data/Image/fcgCNN/040.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_4000_.jpg" width="224" /></a></td>
 							<td><a href="data/Image/fcgCNN/047.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_4000_.jpg"><img src="data/Image/fcgCNN/047.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_4000_.jpg" width="224" /></a></td>
-							<td><a href="data/Image/fcgCNN/t6.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg"><img src="data/Image/fcgCNN/t6.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg" width="224" /></a></td>
+							<td><a href="data/Image/fcgCNN/porous.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg"><img src="data/Image/fcgCNN/porous.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg" width="224" /></a></td>
 					</tr>
 					<tr>
 							<th scope="col">TextureNet</th>
@@ -377,10 +691,111 @@
 							<td><a href="data/Image/TextureNet/034.png"><img src="data/Image/TextureNet/034.png" width="224" /></a></td>
 							<td><a href="data/Image/TextureNet/040.png"><img src="data/Image/TextureNet/040.png" width="224" /></a></td>
 							<td><a href="data/Image/TextureNet/047.png"><img src="data/Image/TextureNet/047.png" width="224" /></a></td>
+							<td><a href="data/Image/TextureNet/porous.png"><img src="data/Image/TextureNet/porous.png" width="224" /></a></td>
+					</tr>
+
+					<tr>
+						<th scope="row">Exemplar</th>
+						<td><a href="data/Image/Image/t6.jpg"><img src="data/Image/Image/t6.jpg" width="128" /></a></td>
+						<td><a href="data/Image/Image/blotchy_0046.jpg"><img src="data/Image/Image/blotchy_0046.jpg" width="128" /></a></td>
+						<td><a href="data/Image/Image/BrickRound0122_1_seamless_S.png"><img src="data/Image/Image/BrickRound0122_1_seamless_S.png" width="128" /></a></td>
+						<td><a href="data/Image/Image/Camo1.jpg"><img src="data/Image/Image/Camo1.jpg" width="128" /></a></td>
+						<td><a href="data/Image/Image/Fruit0017_512.png"><img src="data/Image/Image/Fruit0017_512.png" width="128" /></a></td>
+					</tr>
+					
+					<tr>
+							<th scope="col">f-cgCNN</th>
+							<td><a href="data/Image/fcgCNN/t6.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg"><img src="data/Image/fcgCNN/t6.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg" width="224" /></a></td>
+							<td><a href="data/Image/fcgCNN/blotchy_0046.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_3000_.jpg"><img src="data/Image/fcgCNN/blotchy_0046.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_3000_.jpg" width="224" /></a></td>
+							<td><a href="data/Image/fcgCNN/BrickRound0122_1_seamless_S.png_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg"><img src="data/Image/fcgCNN/BrickRound0122_1_seamless_S.png_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg" width="224" /></a></td>
+							<td><a href="data/Image/fcgCNN/Camo1.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg"><img src="data/Image/fcgCNN/Camo1.jpg_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg" width="224" /></a></td>
+							<td><a href="data/Image/fcgCNN/Fruit0017_512.png_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg"><img src="data/Image/fcgCNN/Fruit0017_512.png_generator_pyramid20_noattention_False_Try_11_num_layer_3_depth_9_inner_10_IsMean_0_Adam_1_sn_False_padtype_zero_normal_False_l1_0.0_Gau_0.0_Fou_0.0_0_step_5000_.jpg" width="224" /></a></td>
+					</tr>
+					<tr>
+							<th scope="col">TextureNet</th>
 							<td><a href="data/Image/TextureNet/t6.png"><img src="data/Image/TextureNet/t6.png" width="224" /></a></td>
+							<td><a href="data/Image/TextureNet/blotchy_0046.png"><img src="data/Image/TextureNet/blotchy_0046.png" width="224" /></a></td>
+							<td><a href="data/Image/TextureNet/BrickRound0122_1_seamless_S.png"><img src="data/Image/TextureNet/BrickRound0122_1_seamless_S.png" width="224" /></a></td>
+							<td><a href="data/Image/TextureNet/Camo1.png"><img src="data/Image/TextureNet/Camo1.png" width="224" /></a></td>
+							<td><a href="data/Image/TextureNet/Fruit0017_512.png"><img src="data/Image/TextureNet/Fruit0017_512.png" width="224" /></a></td>
+					</tr>
+
+				</table>
+
+				<table class="content-table">
+					<tr>
+						<td colspan="6">
+							<div>
+							<h2 class="add-top-margin">Dynamic texture expansion</h2>
+							<hr>
+							<p style="text-align:justify">
+									Expanding dynamic textures using f-cgCNN, the exemplars have 12 frames and each frames are of size (128, 128), and the synthesized textures have 47 frames and each frames are of size (475, 475).
+							</p>
+							</div>
+						</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" >Exemplar</th>
+						<td><a href="data/Dynamic/ori/water_5.gif"><img src="data/Dynamic/ori/water_5.gif" width="128" /></a></td>
+						<td><a href="data/Dynamic/ori/birds.gif"><img src="data/Dynamic/ori/birds.gif" width="128" /></a></td>
+						<td><a href="data/Dynamic/ori/shiny_circles.gif"><img src="data/Dynamic/ori/shiny_circles.gif" width="128" /></a></td>
+						<td><a href="data/Dynamic/ori/sea_3.gif"><img src="data/Dynamic/ori/sea_3.gif" width="128" /></a></td>
+						<td><a href="data/Dynamic/ori/coral.gif"><img src="data/Dynamic/ori/coral.gif" width="128" /></a></td>
+						<!-- <td><img  width="128" /></td> -->
+	
+					</tr>
+					<tr>
+						<th>f-cgCNN</th>
+						<td><a href="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif"><img src="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif" width="224" /></a></td>
+						<td><a href="data/Dynamic/expasion/birds_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif"><img src="data/Dynamic/expasion/birds_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif" width="224" /></a></td>
+						<td><a href="data/Dynamic/expasion/shiny_circles_generator_pyramid38sr1_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif"><img src="data/Dynamic/expasion/shiny_circles_generator_pyramid38sr1_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif" width="224" /></a></td>
+						<td><a href="data/Dynamic/expasion/sea_3_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif"><img src="data/Dynamic/expasion/sea_3_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif" width="224" /></a></td>
+						<td><a href="data/Dynamic/expasion/coral_generator_pyramid36rs_num_layer_0_depth_6.gif"><img src="data/Dynamic/expasion/coral_generator_pyramid36rs_num_layer_0_depth_6.gif" width="224" /></a></td>
+						<!-- <td><a href="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif"><img src="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif" width="450" /></a></td> -->
+						<!-- <td><a href="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif"><img src="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif" width="450" /></a></td> -->
+						<!-- <td><img  width="128" /></td> -->
 					</tr>
 				</table>
-	
+
+				<table class="content-table">
+					<tr>
+						<td colspan="4">
+							<div>
+							<h2 class="add-top-margin">Sound texture expansion</h2>
+							<hr>
+							<p style="text-align:justify">
+								Expanding sound textures using f-cgCNN, 
+								the exemplars have 16384 data points (less than 1 second), 
+								and the synthesized textures have 122880 data points (~5 seconds)
+							</p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">bees</th>
+						<!-- <th scope="col">birds</th> -->
+						<th scope="col">shaking paper</th>
+						<th scope="col">wind</th>
+					</tr>	
+					<tr>
+						<th scope="row" >Exemplar</th>
+						<td><audio controls src="data/Sound/ori_short/norm_Bees.wav"></audio></td>
+						<!-- <td><audio controls src="data/Sound/ori_short/norm_Large_excited_group.wav"></audio></td> -->
+						<td><audio controls src="data/Sound/ori_short/norm_shaking_paper.wav"></audio></td>
+						<td><audio controls src="data/Sound/ori_short/norm_Wind_whistling.wav"></audio></td>
+					</tr>
+
+					<tr>
+						<th scope="row"> f-cgCNN</th>
+						<td><audio controls src="data/Sound/expansion/norm_Bees.wav_generator_pyramid22_num_layer_0_Try_8_depth_4_inner_10_IsMean_0_Adam_0_Gau_0.0.wav"></audio></td>
+						<!-- <td><audio controls src="data/Sound/expansion/norm_Large_excited_group.wav_generator_pyramid22_num_layer_0_Try_8_depth_4_inner_10_IsMean_0_Adam_0_Gau_0.0.wav"></audio></td> -->
+						<td><audio controls src="data/Sound/expansion/norm_shaking_paper.wav_generator_pyramid22_num_layer_0_Try_8_depth_4_inner_10_IsMean_0_Adam_0_Gau_0.0.wav"></audio></td>
+						<td><audio controls src="data/Sound/expansion/norm_Wind_whistling.wav_generator_pyramid22_num_layer_0_Try_8_depth_4_inner_10_IsMean_0_Adam_0_Gau_0.0.wav"></audio></td>
+					</tr>
+			</table>
+
 				<table class="content-table",class="left-align">
 						<tr>
 							<td colspan="9">
@@ -388,14 +803,17 @@
 								<h2 class="add-top-margin">Image texture inpainting</h2>
 								<hr>
 								<p style="text-align:justify">
-									Image texture inpainting,  no post-processing is used.
+									Image texture inpainting using our method. 
+									The exemplars are of size (256, 256),
+									the size of mask is (60, 60).
+									No post-processing is used.
 								</p>
 								</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<th scope="row">Corrupted</th>
+							<th scope="row">Corrupted exemplar</th>
 							<td><a href="data/Image/inpainting/masked/masked_Camo3.jpg"><img src="data/Image/inpainting/masked/masked_Camo3.jpg" width="128" /></a></td>
 							<td><a href="data/Image/inpainting/masked/masked_brick_border.png"><img src="data/Image/inpainting/masked/masked_brick_border.png" width="128" /></a></td>
 							<td><a href="data/Image/inpainting/masked/masked_fibrous_0145.jpg"><img src="data/Image/inpainting/masked/masked_fibrous_0145.jpg" width="128" /></a></td>
@@ -442,97 +860,8 @@
 	
 
 
-		<table class="content-table">
-			<tr>
-				<td colspan="7">
-					<div>
-					<h2 class="add-top-margin">Dynamic texture synthesis</h2>
-					<hr>
-					<p style="text-align:justify">
-							Synthesis dynamic textures using c-cgCNN, all exemplars and the synthesized dynamic textures have 12 frames and each frames are of size (128, 128).
-					</p>
-					</div>
-				</td>
-			</tr>
-		
-			<tr>
-				<th scope="row">Exemplar</th>
-				<td><a href="data/Dynamic/ori/birds.gif"><img src="data/Dynamic/ori/birds.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/ori/smoke_1.gif"><img src="data/Dynamic/ori/smoke_1.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/ori/sea_4.gif"><img src="data/Dynamic/ori/sea_4.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/ori/sky_clouds_2.gif"><img src="data/Dynamic/ori/sky_clouds_2.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/ori/calm_water_4.gif"><img src="data/Dynamic/ori/calm_water_4.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/ori/flames.gif"><img src="data/Dynamic/ori/flames.gif" width="128" /></a></td>
-			</tr>
-			<tr>
-				<th scope="col">Two-stream</th>
-				<td><a href="data/Dynamic/two_stream/birds_128.gif"><img src="data/Dynamic/two_stream/birds_128.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/two_stream/smoke_1_128.gif"><img src="data/Dynamic/two_stream/smoke_1_128.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/two_stream/sea_4_128.gif"><img src="data/Dynamic/two_stream/sea_4_128.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/two_stream/sky_clouds_2_128.gif"><img src="data/Dynamic/two_stream/sky_clouds_2_128.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/two_stream/calm_water_4_128.gif"><img src="data/Dynamic/two_stream/calm_water_4_128.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/two_stream/flames_128.gif"><img src="data/Dynamic/two_stream/flames_128.gif" width="128" /></a></td>
-			</tr>
-			<tr>
-				
-				<th scope="col">c-cgCNN-Gram</th>
-				<td><a href="data/Dynamic/our/birds_gram_0_.gif"><img src="data/Dynamic/our/birds_gram_0_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/smoke_1_gram_0_.gif"><img src="data/Dynamic/our/smoke_1_gram_0_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/sea_4_gram_0_.gif"><img src="data/Dynamic/our/sea_4_gram_0_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/sky_cloud_2_gram_0_.gif"><img src="data/Dynamic/our/sky_cloud_2_gram_0_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/calm_water_4_gram_1_.gif"><img src="data/Dynamic/our/calm_water_4_gram_1_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/flames_gram_0_.gif"><img src="data/Dynamic/our/flames_gram_0_.gif" width="128" /></a></td>
-			</tr>
-			<tr>
-				<th scope="col">c-cgCNN-mean</th>
-				<td><a href="data/Dynamic/our/birds_mean_0_.gif"><img src="data/Dynamic/our/birds_mean_0_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/smoke_1_mean_0_.gif"><img src="data/Dynamic/our/smoke_1_mean_0_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/sea_4_mean_0_.gif"><img src="data/Dynamic/our/sea_4_mean_0_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/sky_cloud_2_mean_1_.gif"><img src="data/Dynamic/our/sky_cloud_2_mean_1_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/calm_water_4_mean_1_.gif"><img src="data/Dynamic/our/calm_water_4_mean_1_.gif" width="128" /></a></td>
-				<td><a href="data/Dynamic/our/flames_mean_1_.gif"><img src="data/Dynamic/our/flames_mean_1_.gif" width="128" /></a></td>
-			</tr>
-		</table>
 	
 
-		<table class="content-table">
-				<tr>
-					<td colspan="5">
-						<div>
-						<h2 class="add-top-margin">Dynamic texture expansion</h2>
-						<hr>
-						<p style="text-align:justify">
-								Expanding dynamic textures using f-cgCNN, the exemplars have 12 frames and each frames are of size (128, 128), and the synthesized textures have 47 frames and each frames are of size (475, 475).
-						</p>
-						</div>
-					</td>
-				</tr>
-			
-				<tr>
-					<th scope="row" >Exemplar</th>
-					<td><a href="data/Dynamic/ori/water_5.gif"><img src="data/Dynamic/ori/water_5.gif" width="128" /></a></td>
-					<td><a href="data/Dynamic/ori/birds.gif"><img src="data/Dynamic/ori/birds.gif" width="128" /></a></td>
-					<td><a href="data/Dynamic/ori/shiny_circles.gif"><img src="data/Dynamic/ori/shiny_circles.gif" width="128" /></a></td>
-					<td><a href="data/Dynamic/ori/sea_3.gif"><img src="data/Dynamic/ori/sea_3.gif" width="128" /></a></td>
-					<!-- <td><img  width="128" /></td> -->
-
-				</tr>
-				<tr>
-					<th>f-cgCNN</th>
-					<td><a href="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif"><img src="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif" width="224" /></a></td>
-					<td><a href="data/Dynamic/expasion/birds_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif"><img src="data/Dynamic/expasion/birds_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif" width="224" /></a></td>
-					<td><a href="data/Dynamic/expasion/shiny_circles_generator_pyramid38sr1_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif"><img src="data/Dynamic/expasion/shiny_circles_generator_pyramid38sr1_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif" width="224" /></a></td>
-					<td><a href="data/Dynamic/expasion/sea_3_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif"><img src="data/Dynamic/expasion/sea_3_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_1500_.gif" width="224" /></a></td>
-					<!-- <td><a href="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif"><img src="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif" width="450" /></a></td> -->
-					<!-- <td><a href="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif"><img src="data/Dynamic/expasion/water_D_generator_pyramid36rs_num_layer_0_depth_6_inner_10_IsMean_0_Adam_0_padtype_zero_normal_False_l1_0.0_Gau_1e-08_Fou_0.0_step_step_2500_.gif" width="450" /></a></td> -->
-					<!-- <td><img  width="128" /></td> -->
-				</tr>
-				<!-- <tr> -->
-					
-					
-					<!-- <td><img  width="128" /></td> -->
-				<!-- </tr> -->
-			</table>
 	
 			<table class="content-table">
 					<tr>
@@ -541,7 +870,9 @@
 							<h2 class="add-top-margin">Dynamic texture inpainting</h2>
 							<hr>
 							<p style="text-align:justify">
-									Inpainting dynamic textures by combining cgCNN with a template searching algorithm.
+									Dynamic texture inpainting using our method. 
+									The size of exemplars is (128, 128), and the size of masks is (30, 30).
+									No post-processing is used.
 							</p>
 							</div>
 						</td>
@@ -566,131 +897,9 @@
 					</tr>
 			</table>
 		  
-			<table class="content-table">
-					<tr>
-						<td colspan="5">
-							<div>
-							<h2 class="add-top-margin">Sound texture synthesis</h2>
-							<hr>
-							<p style="text-align:justify">
-									
-							</p>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th scope="col"></th>
-						<th scope="col">heavy rain</th>
-						<th scope="col">drill</th>
-						<th scope="col">applause</th>
-						<th scope="col">insects</th>
-					</tr>	
-					<tr>
-						<th scope="row" >Exemplar</th>
-						<td><audio controls="">
-								<source src="data/Sound/ori/norm_Heavy_rain_falling_and_dripping.wav" >
-							</audio>
-						</td>
-						<td><audio controls="">
-							<source src="data/Sound/ori/norm_Pneumatic_drills_at_road_works.wav">
-						</audio>
-						</td>
-						<td><audio controls="">
-							<source src="data/Sound/ori/norm_Enthusiastic_applause.wav">
-						</audio>
-						</td>
-						<td><audio controls src="data/Sound/ori/norm_Insects_In_A_Swamp.wav"></audio></td>
-					</tr>
-
-					<tr>
-						<th scope="row" >McDermott’s result</th>
-						<td><audio controls="">
-								<source src="data/Sound/MC/ESE-42-Heavy-rain-falling-and-dripping_10111119000110.wav" >
-							</audio>
-						</td>
-						<td><audio controls="">
-							<source src="data/Sound/MC/CSE-22Pneumaticdrillsatroad_works_10111119000110.wav">
-						</audio>
-						</td>
-						<td><audio controls="">
-							<source src="data/Sound/MC/CSE-28_Enthusiastic_applause_10111119000110.wav">
-						</audio>
-						</td>
-						<td><audio controls src="data/Sound/MC/SE2-67InsectsInASwamp_10111119000110.wav"></audio></td>
-					</tr>
-
-					<tr>
-						<th scope="row" >c-cgCNN-mean</th>
-						<td><audio controls="">
-								<source src="data/Sound/our/_Ini0_0_norm_Heavy_rain_falling_and_dripping.wav_Try_5_num_layer_0_depth_4_IsMean_1_Adam_0_sn_0_Gau_1e-08_inner_10_0_5000_.wav" >
-							</audio>
-						</td>
-						<td><audio controls="">
-							<source src="data/Sound/our/_Ini0_0_norm_Pneumatic_drills_at_road_works.wav_Try_5_num_layer_0_depth_4_IsMean_1_Adam_0_sn_0_Gau_1e-08_inner_10_0_5000_.wav">
-						</audio>
-						</td>
-						<td><audio controls="">
-							<source src="data/Sound/our/_Ini0_0_norm_Enthusiastic_applause.wav_Try_8_num_layer_0_depth_4_IsMean_1_Adam_0_sn_0_Gau_1e-08_inner_10_1_5000_.wav">
-						</audio>
-						</td>
-						<td><audio controls src="data/Sound/our/_Ini0_0_norm_Insects_In_A_Swamp.wav_Try_8_num_layer_0_depth_4_IsMean_1_Adam_0_sn_0_Gau_1e-08_inner_10_1_5000_.wav"></audio></td>
-					</tr>
-
-					<tr>
-						<th scope="row" >c-cgCNN-Gram</th>
-						<td><audio controls="">
-								<source src="data/Sound/our/_Ini0_0_norm_Heavy_rain_falling_and_dripping.wav_Try_8_num_layer_0_depth_4_IsMean_0_Adam_0_sn_0_Gau_0.0_inner_10_0_5000_.wav" >
-							</audio>
-						</td>
-						<td><audio controls="">
-							<source src="data/Sound/our/_Ini0_0_norm_Pneumatic_drills_at_road_works.wav_Try_8_num_layer_0_depth_4_IsMean_0_Adam_0_sn_0_Gau_1e-08_inner_10_0_5000_.wav">
-						</audio>
-						</td>
-						<td><audio controls="">
-							<source src="data/Sound/our/_Ini0_0_norm_Enthusiastic_applause.wav_Try_5_num_layer_0_depth_4_IsMean_0_Adam_0_sn_0_Gau_0.0_inner_10_0_5000_.wav">
-						</audio>
-						</td>
-						<td><audio controls src="data/Sound/our/_Ini0_0_norm_Insects_In_A_Swamp.wav_Try_8_num_layer_0_depth_4_IsMean_0_Adam_0_sn_0_Gau_0.0_inner_10_0_5000_.wav"></audio></td>
-					</tr>
-			</table>
 	
 
 
-			<table class="content-table">
-					<tr>
-						<td colspan="4">
-							<div>
-							<h2 class="add-top-margin">Sound texture expansion</h2>
-							<hr>
-							<p style="text-align:justify">
-									
-							</p>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th scope="col"></th>
-						<th scope="col">bees</th>
-						<!-- <th scope="col">birds</th> -->
-						<th scope="col">shaking paper</th>
-						<th scope="col">wind</th>
-					</tr>	
-					<tr>
-						<th scope="row" >Exemplar</th>
-						<td><audio controls src="data/Sound/ori_short/norm_Bees.wav"></audio></td>
-						<!-- <td><audio controls src="data/Sound/ori_short/norm_Large_excited_group.wav"></audio></td> -->
-						<td><audio controls src="data/Sound/ori_short/norm_shaking_paper.wav"></audio></td>
-						<td><audio controls src="data/Sound/ori_short/norm_Wind_whistling.wav"></audio></td>
-					</tr>
-
-					<tr>
-						<th scope="row"> f-cgCNN</th>
-						<td><audio controls src="data/Sound/expansion/norm_Bees.wav_generator_pyramid22_num_layer_0_Try_8_depth_4_inner_10_IsMean_0_Adam_0_Gau_0.0.wav"></audio></td>
-						<!-- <td><audio controls src="data/Sound/expansion/norm_Large_excited_group.wav_generator_pyramid22_num_layer_0_Try_8_depth_4_inner_10_IsMean_0_Adam_0_Gau_0.0.wav"></audio></td> -->
-						<td><audio controls src="data/Sound/expansion/norm_shaking_paper.wav_generator_pyramid22_num_layer_0_Try_8_depth_4_inner_10_IsMean_0_Adam_0_Gau_0.0.wav"></audio></td>
-						<td><audio controls src="data/Sound/expansion/norm_Wind_whistling.wav_generator_pyramid22_num_layer_0_Try_8_depth_4_inner_10_IsMean_0_Adam_0_Gau_0.0.wav"></audio></td>
-					</tr>
-			</table>
 
 			<table class="content-table">
 					<tr>
@@ -699,7 +908,10 @@
 							<h2 class="add-top-margin">Sound texture inpainting</h2>
 							<hr>
 							<p style="text-align:justify">
-									
+								Sound texture inpainting using our method, 
+								the corrputed exemplars have 50000 data points, 
+								and the mask covers the interval from 20000-th to 30000-th data point.
+								No post-processing is used.
 							</p>
 							</div>
 						</td>
@@ -778,7 +990,7 @@
 					<li>
 						<b>Deep image prior</b><br>
 						Ulyanov, Dmitry and Vedaldi, Andrea and Lempitsky, Victor
-						CCVPR, 2018
+						CVPR, 2018
 					</li>	
 					<li>
 						<b>Generative image inpainting with contextual attention</b><br>
