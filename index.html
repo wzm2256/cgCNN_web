@@ -47,7 +47,7 @@
 	<div class="content">
 		<table class="content-table">
 		      <h1 style="text-align:center; margin-top:60px; font-weight: bold; font-size: 35px;">
-				Conditional Generative ConvNets for 
+				Conditional Generative ConvNets for <br/>
 					Exemplar-based Texture Synthesis</h1>
 	        
 				<p style="text-align:center; margin-bottom:15px; margin-top:20px; font-size: 18px;">
@@ -65,25 +65,22 @@
 					<div>
 					<h2 class="add-top-margin">Brief overview</h2>
 					<p style="text-align:justify">
-						The goal of exemplar-based texture synthesis is to generate textures that are visually similar to a given exemplar.
-						Recently,
-						promising results have been reported by methods 
-						relying on convolutional neural networks (ConvNets)  that are pretrained on large-scale image datasets. 
-						However, 
-						these methods have difficulty in synthesizing non-local textures and extending to dynamic or sound textures.
-						In this paper,
-						we present a conditional generative ConvNet (cgCNN) model which combines deep statistics and the probabilistic framework of generative ConvNet (gCNN) model.
-						Given a texture exemplar, 
-						cgCNN defines a conditional distribution using deep statistics of a ConvNet,
-						and synthesize new textures by sampling from the conditional distribution.
-						In contrast with previous deep texture models, 
-						cgCNN dose not use any pretrained ConvNets but learns the weights of ConvNets for each input exemplar instead. 
-						As a result,
-						cgCNN can synthesize high quality
-						dynamic, sound and image textures in a unified manner.
-						Further investigations show that cgCNN can be easily generalized to texture expansion and inpainting.
-						Experiments	demonstrate that our model can achieve better or at least comparable results than the state-of-the-art methods.
-					
+							The goal of exemplar-based texture synthesis is to generate texture images that are visually similar to a given exemplar.
+							Recently, 
+							promising results have been reported by methods relying on convolutional neural networks (ConvNets) pretrained on large-scale image datasets. 
+							However, 
+							these methods have difficulties in synthesizing image textures with non-local structures and extending to dynamic or sound textures.	
+							In this paper, 
+							we present a conditional generative ConvNet (cgCNN) model which combines deep statistics and the probabilistic framework of generative ConvNet (gCNN) model. 
+							Given a texture exemplar, 
+							the cgCNN model defines a conditional distribution using deep statistics of a ConvNet, 
+							and synthesize new textures by sampling from the conditional distribution.	
+							In contrast to previous deep texture models, 
+							the proposed cgCNN dose not rely on pre-trained ConvNets but learns the weights of ConvNets for each input exemplar instead.
+							As a result, the cgCNN model can synthesize high quality dynamic, sound and image textures in a unified manner.
+							We also explore the theoretical connections between our model and other texture models.
+							Further investigations show that the cgCNN model can be easily generalized to texture expansion and inpainting.
+							Extensive experiments demonstrate that our model can achieve better or at least comparable results than the state-of-the-art methods.					
 					</p>
 					</div>
 				</td>
@@ -111,38 +108,41 @@
 					<br>
 					<br>
 					We propose a new texture model named conditional generative ConvNet (cgCNN) by integrating deep texture statistics and the probabilistic framework of generative ConvNet (gCNN).
-
-					Comparing to previous texture models that rely on pretrained ConvNets,
-					cgCNN has three main advantages:					
+					Unlike previous texture models that rely on pretrained ConvNets,
+					cgCNN learns the weights of the ConvNet for each input exemplar.
+					It therefore has two main advantages:	
 					<ul style="font-weight:normal; text-align:justify;">
 					    <li>
-							It allows to synthesize different types of textures in a unified manner.
+							It allows to synthesize image, dynamic and sound textures in a unified manner. 
 						</li>
 						<li>
-							It can synthesize non-local textures without extra penalty terms as it is easier for the sampling algorithm to escape from local minimums,
-						</li>
-						<li>
-							It dose not require extra storage space for pretrained weights, and the synthesis results are free from low-level noise.
+							It can synthesize textures with non-local structures without using extra penalty terms.
 						</li>
 					</ul>
-
-					<!-- We further present two forms of cgCNN:
-					<ul style="font-weight:normal; text-align:justify;">
-					    <li>
-							canonical cgCNN (c-cgCNN): It can synthesize highly non-stationary textures, and it's a generalization of Gatys' model.
-						</li>
-						<li>
-							forward cgCNN (f-cgCNN): It can synthesize arbitrarily large stationary textures, and it's a generalization of TextureNet.
-						</li>
-					</ul> -->
 
 					The main contributions of this work are summarized as follows:
 					<ul style="font-weight:normal; text-align:justify;">
 					    <li>
-							We propose cgCNN as a unified model for synthesizing various types of textures with high visual quality. It is also the first deep texture model for dynamic or sound texture expansion.
+							We propose a new texture model named <b>cgCNN</b> which combines deep statistics and the probabilistic framework of gCNN model. 
+							Instead of relying on pretrained ConvNets as previous deep texture models,
+							the proposed cgCNN learns the weights of the ConvNet adaptively for each input exemplar.
+							As a result, 
+							cgCNN can synthesize high quality dynamic, sound and image textures in a unified manner.
 						</li>
 						<li>
-							We propose a simple but effective algorithm for texture inpainting based on cgCNN. It is the first neural algorithm for sound texture inpainting.
+							We present two forms of cgCNN and show their effectiveness in <b>texture synthesis and expansion </b>: 			
+							c-cgCNN can synthesize highly non-stationary textures without extra penalty terms, 
+							while f-cgCNN can synthesize arbitrarily large stationary textures. 
+							We also show their strong theoretical connections with previous texture models. 
+							Note f-cgCNN is the first deep texture model that enables us to expand dynamic or sound textures.
+						</li>
+						<li>
+								We present a simple but effective algorithm for <b>texture inpainting </b> on the proposed cgCNN. 
+								To our knowledge, it is the first neural algorithm for inpainting sound textures.
+						</li>
+						<li>
+								Extensive experiments in synthesis, expansion and inpainting of various types of textures using cgCNN. 
+								We demonstrate that our model achieves better or at least comparable results than the state-of-the-art methods.
 						</li>
 					</ul>
 
@@ -158,8 +158,6 @@
 						<h2 class="add-top-margin">Bounded constraint</h2>
 						<hr>
 						<p style="text-align:justify">
-							To ensure the energy dose not diverge to infinity,
-							we adopting bounded activation function in the network architecture.
 							We compare the results using different activation functions,
 							i.e. hard sigmoid, tanh and sigmoid.  
 						</p>
@@ -210,9 +208,11 @@
 						<h2 class="add-top-margin">Diversity of c-cgCNN</h2>
 						<hr>
 						<p style="text-align:justify">
-							The diversity of the synthesized textures is the result of the randomness of initial Gaussian noise, 
-							thus one does not need to make extra effort to ensure such diversity. 
-						</p>
+								It is important for a texture synthesis algorithm to be able to synthesis diversified texture samples using a given exemplar.
+								For the proposed c-cgCNN model,
+								the diversity of the synthesized textures is a direct result of the randomness of the initial Gaussian noise, 
+								thus one does not need to make extra effort to ensure such diversity. 
+													</p>
 						</div>
 					</td>
 				</tr>
@@ -258,12 +258,14 @@
 			<tr>
 				<td colspan="9">
 					<div>
-					<h2 class="add-top-margin">Compare c-cgCNN with fixed random model</h2>
+					<h2 class="add-top-margin">Ablation study of the learning algorithm</h2>
 					<hr>
 					<p style="text-align:justify">
-						c-cgCNN becomes a fixed random model if we freeze the network during training. 
-						As we can see, this fixed model can only synthesize low quality textures which are blurry and noisy.
-					</p>
+							In order to verify the importance of D-learning step,
+							we test a fixed random method which is to disable D-learning step.
+							Clearly, 
+							our method produces more favorable results than this fixed random method.
+							</p>
 					</div>
 				</td>
 			</tr>
