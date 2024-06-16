@@ -11,7 +11,8 @@ for root, folder, files in os.walk('data'):
                 .replace('pyramid', '').replace('inner_', 'in_').replace('l1_0.0_', '').replace('noattention_False_', '')\
                 .replace('normal_False_', '').replace('IsMean_', 'M_').replace('False', 'F').replace('sn_F', '').replace('sn_0', '')\
                 .replace('Gau', 'G')
-
+            if new_file[0] == '_':
+                new_file = new_file[1:]
             if new_file != file:
                 if new_file in files:
                     raise ValueError(f'{new_file} exists!' )
